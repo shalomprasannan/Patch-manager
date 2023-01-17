@@ -1,0 +1,23 @@
+<html>
+<head></head>
+
+<body>
+  <div id="message"></div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var server = io();
+    const data={"clientdata":"can you see me?"};
+        server.emit('data',data);
+
+    server.on('message', function(msg){
+        console.log(msg);
+        document.getElementById("message").innerHTML = msg;
+        const data={"clientdata":"can you see me?"};
+        server.emit('data',data);
+      
+    });
+    
+  </script>
+</body>
+</html>
